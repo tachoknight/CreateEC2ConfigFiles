@@ -21,7 +21,7 @@ type configData struct {
 }
 
 func main() {
-	// We take two command-line arguments, "key" and "value" as
+	// We take three command-line arguments, "key", "value", and "region" as
 	// these are going to be passed to the EC2 filter for querying
 	keyPtr := flag.String("key", "xyzzy", "EC2 Tag 'Key' (Note: case sensitive)")
 	valuePtr := flag.String("value", "xyzzy", "EC2 Tag 'Value' (Note: case sensitive)")
