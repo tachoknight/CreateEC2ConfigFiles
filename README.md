@@ -15,6 +15,9 @@ will produce a `ec2_production` file that you can put in your `~/.ssh` directory
 
 `Include ec2_production`
 
+### AWS Credentials ###
+This program uses the AWS credentials, via the AWS SDK, stored either as environment variables or in the `~/.aws/credentials` file. 
+
 ## Notes ##
 * This program assumes that an EC2 instance with a public ip is a "bastion" machine, and that all the instances with only a private IP will use the bastion machine as the proxy.
 * It's assumed you have the proper keys to log into the instance; it does not read or do anything with keys other than indicate which key goes with which instance.
