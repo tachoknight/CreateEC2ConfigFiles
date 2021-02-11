@@ -105,8 +105,22 @@ func main() {
 
 	keyLocation := "~/.ssh/"
 
+	hostNames := make(map[string]int)
+
 	for _, i := range instances {
-		fmt.Printf("Host \"%s\"\n", i.hostName)
+		// First let's see if there's already a key in the dictionary
+		// with this hostname, in which case we need to append the
+		// dictionary value + 1
+		num, ok := hostNames[i.hostName]
+		num = num + 1
+		if ok {
+			fmt.Printf("Host \"%s\"\n", fmt.Sprintf("%s-%d", i.hostName, num))
+			hostNames[i.hostName] = num
+		} else {
+			fmt.Printf("Host \"%s\"\n", i.hostName)
+			hostNames[i.hostName] = num
+		}
+
 		if len(i.publicIPAddress) > 0 {
 			fmt.Printf("\tHostName %s\n", i.publicIPAddress)
 		} else {
